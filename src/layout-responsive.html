@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Alciv@rDev WebSite</title>
+    <link rel="stylesheet" href="layout-responsive.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <meta name="description" content="Portafolio web de Alcivar Madrid Andy Adriano. Desarrollo frontend y backend, proyectos web, contacto y más.">
+    <meta name="author" content="Andy Adriano Alcivar Madrid">
+    <meta name="keywords" content="Desarrollador Web, Frontend, Backend, HTML, CSS, JavaScript, Java, MySQL, Portafolio, AlcivarDev">
+</head>
+<body>
+
+<header id="header">
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home" aria-label="Ir a la Seccion de Inicio"><i class="fas fa-code"> </i></a></li> 
+            <li class="hideOnMobile"><a href="#home">Home</a></li>
+            <li class="hideOnMobile"><a href="#about">About</a></li>
+            <li class="hideOnMobile"><a href="#skills">Skills</a></li>
+            <li class="hideOnMobile"><a href="#projects">Projects</a></li>
+            <li class="hideOnMobile"><a href="#contact">Contact</a></li>
+            <li class="hideOnMobile theme-toggle-container-desktop">
+                <button class="theme-btn animate__animated animate__backInUp" id="theme-toggle-desktop-btn">Cambiar Modo</button>
+            </li>
+            <li class="menu-button"><button onclick="showSidebar()"><i class="fa-brands fa-stack-overflow"></i></button>
+            </li>
+        </ul>
+
+        <ul class="sidebar" id="sidebar" onclick="hideSidebar()">
+        <li class="menu-button">
+        <a href="#" onclick="event.preventDefault(); hideSidebar();">
+            <i class="fas fa-times"></i>
+            </a>
+        </li>
+            <li><a href="#home" onclick="hideSidebar()">Home</a></li>
+            <li><a href="#about" onclick="hideSidebar()">About</a></li>
+            <li><a href="#skills" onclick="hideSidebar()">Skills</a></li>
+            <li><a href="#projects" onclick="hideSidebar()">Projects</a></li>
+            <li><a href="#contact" onclick="hideSidebar()">Contact</a></li>
+            <li class="theme-toggle-container-mobile">
+                <button class="theme-btn animate__animated animate__backInUp" id="theme-toggle-mobile-btn">Cambiar Modo</button>
+            </li>
+        </ul>
+    </nav>
+    <div id="mode-message" class="mode-message"></div>
+</header>
+
+<main id="main-content">
+
+    <section id="home" class="section-content">
+        <div class="home-hologram animate__animated animate__backInUp">
+            <picture>
+                <source srcset="../img/perfil-base.webp" type="image/webp">
+                <img class="base" src="../img/perfil-base.jpg" alt="@lciv@rDev" loading="lazy" />
+            </picture>
+        </div>
+        <div class="home-intro-content animate__animated animate__backInUp">
+            <div class="text">
+                <h1>Alcivar Madrid Andy Adriano</h1>
+                <h3>Fronted and Backend Development. ¡Explora mis Proyectos y conoce más sobre mí!</h3>
+            </div>
+            <div class="social-links">
+                <div class="social-links-home">
+                    <a href="https://github.com/Andy-Alcivar" target="_blank" aria-label="GitHub de Andy Alcivar"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/andy-adriano-alcivar-madrid-1666b31b8/" target="_blank" aria-label="linkedin de Andy Alcivar"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.freecodecamp.org/certification/alcivar-madrid-andy/responsive-web-design" target="_blank" aria-label="freecodecamp de Andy Alcivar"><i class="fab fa-free-code-camp"></i></a>
+                    <a href="mailto:andyalcivar60@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/593992084599?text=Hola%20Andy,%20vi%20tu%20portafolio%20y%20me%20interesa%20hablar%20contigo." target="_blank" aria-label="Whatsapp de Andy Alcivar"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="../assets/Cv_Andy_Alcivar_Madrid.pdf" download="Cv_Andy_Alcivar_Madrid.pdf" class="cv-download"><i class="fas fa-file-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-content">
+        <h2 class="section-title">
+            <span class="typing-text">🎓Studies</span>
+        </h2>
+        <div class="cert-container scroll-animar" data-animation="animate__backInUp">
+            <div class="cert-card">
+                <div class="cert-info">
+                    <picture>
+                        <source srcset="../img/Responsive-Web-Designer.webp" type="image/webp">
+                        <img src="../img/Responsive-Web-Designer.jpg" alt="Logo del curso" class="cert-logo" loading="lazy">
+                    </picture>
+                    <p class="free">FreeCodeCamp fue creado en octubre de 2014 por Quincy Larson y es una organización sin ánimo de lucro, la misma que es una plataforma web de enseñanza interactiva con diversas publicaciones y organizaciones 
+                    locales que pretenden hacer de la enseñanza del desarrollo web algo accesible a todas las personas.</p>
+                </div>
+                <a href="https://www.freecodecamp.org/certification/ALCIVAR-MADRID-ANDY/responsive-web-design" target="_blank" class="cert-button">Ver certificado</a>
+            </div>
+            <div class="cert-card">
+                <div class="cert-info">
+                    <picture>
+                        <source srcset="../img/Facultad-Ciencias-Matematicas-Fisicas.webp" type="image/webp">
+                        <img src="../img/Facultad-Ciencias-Matematicas-Fisicas.jpg" alt="Logo del curso" class="cert-logo" loading="lazy">
+                    </picture> 
+                    <h3>Universidad de Guayaquil (UG)</h3>
+                    <p>Ing. en TICS</p>
+                    <p>2021 - 2026</p>
+                    <p>Cursando: 9/10 Semestre</p>
+                </div>
+                <a href="https://www.ug.edu.ec/" target="_blank" class="cert-button">Visitar</a>
+            </div>
+        </div>
+    </section> 
+
+    <section id="skills" class="section-content">
+        <h2 class="section-title">
+            <span class="typing-text">🛠️ Skills</span> 
+        </h2>
+        <div class="div-skills scroll-animar" data-animation="animate__jackInTheBox">
+            <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" aria-label="Habilidad HTML">
+                <i class="fa-brands fa-html5"></i>
+                <h2>HTML</h2>
+            </a>
+            <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" aria-label="Habilidad CSS">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h2>CSS</h2>
+            </a>
+            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" aria-label="Habilidad JavaScript">
+                <i class="fa-brands fa-js"></i>
+                <h2>JavaScript</h2>
+            </a>
+            <a href="https://www.java.com/es/" target="_blank" aria-label="Habilidad Java">
+                <i class="fa-brands fa-java"></i>
+                <h2>Java</h2>
+            </a>
+            <a href="https://www.mysql.com/" target="_blank" aria-label="Habilidad MySQL">
+                <i class="fa-solid fa-database"></i>
+                <h2>MySQL</h2>
+            </a>
+             </div>
+
+        <h2 class="section-title">
+            <span class="typing-text">🛠️ Tools</span> 
+        </h2>
+        <div class="div-skills scroll-animar" data-animation="animate__jackInTheBox">
+            <a href="https://www.docker.com/" target="_blank" aria-label="Herramienta Docker">
+                <i class="fa-brands fa-docker"></i>
+                <h2>Docker</h2>
+            </a>
+            <a href="https://www.postman.com/" target="_blank" aria-label="Herramienta Postman">
+                <i class="fa-solid fa-paper-plane"></i>
+                <h2>Postman</h2>
+            </a>
+            <a href="https://www.jetbrains.com/es-es/idea/download/?section=windows" target="_blank" aria-label="Herramienta Inte">
+                <i class="fa-solid fa-terminal"></i>
+                <h2>Intellij</h2>
+            </a>
+            <a href="https://www.phpmyadmin.net/" target="_blank" aria-label="Herramienta phpMyAdmin">
+                <i class="fa-solid fa-server"></i>
+                <h2>phpMyAdmin</h2>
+            </a>
+             <a href="https://www.hostinger.com/es?utm_campaign=Brand-RET|NT:Se|LO:Other-LATAM-t2&utm_medium=ppc&gad_source=1&gad_campaignid=20858835595&gbraid=0AAAAADMy-hYq5brIY6MK5HpG-MNJabJjT&gclid=CjwKCAiA3-3KBhBiEiwA2x7FdFw1T4HvLF2jgd-Do3QM209aBIrDFqg-b3HblkEUEiSAPKYd84nUmhoC2bgQAvD_BwE" target="_blank" aria-label="Herramienta Hostinger">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <h2>Hostinger</h2>
+            </a>
+             </div>
+    </section>
+
+    <section id="projects" class="section-content">
+        <h2 class="section-title">
+            <span class="typing-text">💻 Projects</span>
+        </h2>
+        <div class="projects scroll-animar" data-animation="animate__backInUp">
+            <div class="project pulse">
+                <div class="card">
+                    <div class="face front">
+                        <picture>
+                            <source srcset="../img/CleaningService-Marbella.webp" type="image/webp">
+                            <img src="../img/CleaningService-Marbella.jpg" alt="Cleaning Service Marbella sitio web realizado con HTML, CSS y JavaScript" loading="lazy">
+                        </picture>
+                        <h3>Cleaning Service Marbella</h3>
+                    </div>
+                    <div class="face back">
+                        <h3>Cleaning Service Marbella</h3>
+                        <p>
+                        Cleaning Service es una página web desarrollada para un negocio de limpieza profesional ubicado en Marbella, España. 
+                        El sitio fue diseñado con un enfoque limpio, moderno y completamente responsive, ofreciendo una experiencia fluida tanto en móviles como en escritorio.  
+                        </p>
+                        <a role="button" href="https://cleaningservice-marbella.com" target="_blank">
+                        <button class="btn neon-pulse">
+                                <span>Details</span>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="iconos">
+                    <a href="https://cleaningservice-marbella.com" target="_blank">
+                        <i class="fa-brands fa-html5 surprise" ></i>
+                        <i class="fa-brands fa-css3-alt surprise"></i>
+                        <i class="fa-brands fa-js surprise"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project pulse">
+                <div class="card">
+                    <div class="face front">
+                        <picture>
+                            <source srcset="../img/DS.webp" type="image/webp">
+                            <img src="../img/DS.jpg" alt="Proyecto Data System realizado con Java y MySQL" loading="lazy">
+                        </picture>
+                            <h3>Data System</h3>
+                    </div>
+                    <div class="face back">
+                        <h3>Data System</h3>
+                        <p>Data System es un software para optimizar la gestión de productos y clientes en una tienda de electrodomésticos llamada StarShop Technology. 
+                        Este sistema CRUD (Create, Read, Update, Delete) permite llevar un control detallado de inventario, registro de clientes, productos y transacciones internas.</p>
+                        <a role="button" href="https://github.com/Andy-Alcivar/CURRICULUM-VITAE" target="_blank">
+                            <button class="btn neon-pulse">
+                                    <span>Details</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="iconos">
+                    <a href="https://github.com/Andy-Alcivar/CURRICULUM-VITAE" target="_blank">
+                        <i class="fa-brands fa-java surprise" ></i>
+                        <i class="fa-solid fa-database surprise"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-content">
+        <h2 class="section-title">
+            <span class="typing-text">📞 Contact</span> 
+        </h2>
+        <div class="contact-grid-container scroll-animar" data-animation="animate__jackInTheBox">
+            <form action="https://formspree.io/f/moqyqzqz" method="POST" class="form" id="contact-form">
+                <label for="name">Nombre Completo:</label>
+                <input type="text" id="name" name="name" placeholder="Tu Nombre" required>
+                <span id="name-error" class="error-message"></span>
+                <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@example.com" required>
+                <span class="error-message" id="email-error"></span>
+
+                <label for="quien-eres">¿Quién eres?</label> <select name="quienEres" id="quien-eres" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="empresa">Empresa / Reclutador</option>
+                    <option value="freelance">Freelancer / Autónomo</option>
+                    <option value="developer">Desarrollador</option>
+                    <option value="designer">Diseñador</option>
+                    <option value="content-creator">Creador de contenido</option>
+                    <option value="student">Estudiante</option>
+                    <option value="other">Otro</option>
+                </select>
+                <span class="error-message" id="quien-eres-error"></span>
+
+                <label for="motivo-contacto">Motivo de Contacto:</label>
+                <select name="motivoContacto" id="motivo-contacto" required>
+                    <option value="" disabled selected>Selecciona un motivo</option>
+                    <option value="project">Quiero contratarte para un proyecto</option>
+                    <option value="collaboration">Colaboración en un proyecto</option>
+                    <option value="question">Tengo una pregunta</option>
+                    <option value="other">Otro</option>
+                </select>
+                <span class="error-message" id="motivo-contacto-error"></span>
+
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                <span id="message-error" class="error-message"></span>
+                <div id="mensaje-exito" class="mensaje-exito">¡Solicitud enviada con éxito!</div>
+                <div id="mensaje-error-envio" class="mensaje-error-envio">Hubo un error al enviar la solicitud.</div>        
+                <button type="submit">Send</button>
+            </form>
+
+            <div class="contact-info-wrapper">
+                <div class="contact-info"> 
+                    <h2>¡Saludos Visitante!</h2> 
+                    <p>¡Hablemos! Si tienes alguna pregunta o necesitas de mi ayuda ¡estaré encantado de escucharte!</p>
+                </div>
+                <div class="video-wrapper">
+                    <div class="video-thumbnail" onclick="loadVideo(this)"> 
+                        <img src="https://img.youtube.com/vi/p8oVKqDyXSg/hqdefault.jpg" alt="Miniatura del video"> 
+                        <div class="play-button"></div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="footer" class="scroll-animar" data-animation="animate__backInUp">
+    <div class="footer-contact">
+        <a href="mailto:andyalcivar60@gmail.com">andyalcivar60@gmail.com</a>
+    </div>
+    <div class="footer-social">
+        <div class="social-links-footer">
+            <a href="https://github.com/Andy-Alcivar" target="_blank" aria-label="GitHub de Andy Alcivar"><i class="fab fa-github "></i></a>
+            <a href="https://www.linkedin.com/in/andy-adriano-alcivar-madrid-1666b31b8/" target="_blank" aria-label="linkedin de Andy Alcivar"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.freecodecamp.org/certification/ALCIVAR-MADRID-ANDY/responsive-web-design" target="_blank" aria-label="freecodecamp de Andy Alcivar"><i class="fab fa-free-code-camp"></i></a>
+            <a href="https://wa.me/593992084599?text=Hola%20Andy,%20vi%20tu%20portafolio%20y%20me%20interesa%20hablar%20contigo." target="_blank" aria-label="Whatsapp de Andy Alcivar">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2025 Alciv@rDev. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="script-layout.js"></script>
+</body>
+</html>

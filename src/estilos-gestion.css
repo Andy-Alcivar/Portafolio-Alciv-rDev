@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Source+Code+Pro:wght@400&display=swap');
+
+:root {
+    --color-neon-principal: #00FF00; /* Verde neón */
+    --color-neon-secundario: #FF00FF; /* Magenta neón */
+    --color-neon-terciario: #00FFFF; /* Cian neón */
+    --color-fondo-principal: #121212; /* Gris oscuro casi negro */
+    --color-fondo-secundario: #222222;
+    --color-texto-claro: #EEEEEE; /* Gris muy claro */
+    --color-texto-medio: #AAAAAA;
+    --color-borde-neon: #33FF33; /* Verde neón más tenue para bordes */
+    --fuente-principal: 'VT323', monospace; /* Una fuente de terminal */
+    --fuente-secundaria: 'Source Code Pro', monospace;
+    --sombra-neón-principal: 0 0 15px rgba(0, 255, 0, 0.3); /* Sombra neón principal */
+    --sombra-neón-secundario: 0 0 8px rgba(0, 255, 0, 0.5); /* Sombra neón secundaria para botones */
+    --sombra-neon-magenta: 0 0 8px rgba(255, 0, 255, 0.5); /* Sombra neón magenta */
+    --sombra-neon-cian: 0 0 8px rgba(0, 255, 255, 0.5); /* Sombra neón cian */
+    --sombra-hover-principal: 0 0 15px var(--color-neon-principal); /* Sombra al hover principal */
+    --sombra-hover-secundario: 0 0 15px var(--color-neon-secundario); /* Sombra al hover secundario */
+    --sombra-hover-terciario: 0 0 15px var(--color-neon-terciario); /* Sombra al hover terciario */
+}
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body 
+{
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    line-height: 1.5;
+    padding: 1.5rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+h1 
+{
+    font-size: 4rem;
+    text-align: center;
+    color: var(--color-neon-principal);
+    text-shadow: 0 0 10px var(--color-neon-principal); /* Efecto de brillo neón */
+}
+#lista-solicitudes 
+{
+    background-color: var(--color-fondo-secundario);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde-neon);
+    box-shadow: var(--sombra-neón-principal); /* Usando la variable de sombra */
+}
+.solicitud 
+{
+    border-bottom: 1px solid var(--color-borde-neon);
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr auto; /* Una columna para info, otra para acciones/botones */
+    align-items: start;
+    font-size: 1.2rem;
+    gap: 1rem;
+}
+.solicitud:last-child 
+{
+    border-bottom: none;
+}
+.solicitud-info-main strong 
+{
+    font-weight: normal; /* Eliminar la negrita predeterminada */
+    color: var(--color-neon-secundario);
+    text-shadow: 0 0 5px var(--color-neon-secundario);
+}
+.respondida 
+{
+    font-weight: bold;
+    color: var(--color-texto-medio); /* Un gris más apagado para indicar que ya está respondida */
+}
+.no-respondida 
+{
+    font-weight: bold;
+    color: var(--color-neon-terciario);
+    text-shadow: 0 0 8px var(--color-neon-terciario);
+}
+/* NUEVO: Contenedor para la parte de la respuesta y los botones de gestión */
+.solicitud-gestion-actions 
+{
+    display: flex;
+    flex-direction: column; /* Para apilar el textarea y el botón */
+    gap: 0.5rem; /* Espacio entre el textarea y el botón */
+    align-items: flex-end; /* Alinea los elementos a la derecha en su columna */
+    /* Puedes ajustar el width si necesitas que esta columna sea más pequeña */
+    width: 450px;
+}
+.respuesta-area 
+{
+    width: 100%; /* Asegura que ocupe todo el ancho disponible en su contenedor */
+}
+.respuesta-area strong 
+{
+    font-weight: normal;
+    color: var(--color-neon-secundario);
+    text-shadow: 0 0 5px var(--color-neon-secundario);
+}
+textarea 
+{
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--color-borde-neon);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    min-height: 80px; /* Altura mínima para que siempre se vea bien */
+    resize: none; /* Desactiva el redimensionamiento horizontal */
+}
+/* Estilos para textarea deshabilitado */
+textarea:disabled 
+{
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto-medio);
+    cursor: not-allowed;
+    border-color: #555;
+}
+button 
+{
+    background-color: var(--color-neon-principal);
+    color: var(--color-fondo-principal);
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-borde-neon);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--fuente-secundaria);
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--sombra-neón-secundario); /* Usando la variable de sombra */
+}
+button:hover 
+{
+    background-color: var(--color-fondo-principal);
+    color: var(--color-neon-principal);
+    border-color: var(--color-neon-principal);
+    box-shadow: var(--sombra-hover-principal); /* Usando la variable de sombra al hover */
+}
+.enviar-respuesta-btn 
+{
+    background-color: var(--color-neon-terciario);
+    box-shadow: var(--sombra-neon-cian); /* Usando la variable de sombra cian */
+}
+.enviar-respuesta-btn:hover 
+{
+    color: var(--color-neon-terciario);
+    border-color: var(--color-neon-terciario);
+    box-shadow: var(--sombra-hover-terciario); /* Usando la variable de sombra al hover */
+}
+/* Estilos para botón deshabilitado */
+.enviar-respuesta-btn:disabled 
+{
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: #333;
+    color: #888;
+    border-color: #555;
+}
+/* Estilos específicos para el contenedor de filtros (manteniéndolos) */
+.filtros-busqueda 
+{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--color-fondo-secundario);
+    border: 1px solid var(--color-borde-neon);
+    border-radius: 5px;
+    align-items: center;
+}
+.filtros-busqueda label 
+{
+    font-size: 1.2rem;
+    color: var(--color-texto-claro);
+}
+.filtros-busqueda select 
+{
+    padding: 0.5rem;
+    border: 1px solid var(--color-borde-neon);
+    border-radius: 3px;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    outline: none;
+    -webkit-appearance: none; /* Añade esta línea */
+    appearance: none; /* Estándar */
+    /* Estilos para la flecha desplegable personalizada */
+    padding-right: 2rem;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2300FF00" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 0.5rem);
+    background-position-y: 50%;
+}
+.filtros-busqueda select,
+.filtros-busqueda input[type="date"] 
+{
+    padding: 0.5rem;
+    border: 1px solid var(--color-borde-neon);
+    border-radius: 3px;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    outline: none;
+}
+.filtros-busqueda select:focus,
+.filtros-busqueda input[type="date"]:focus 
+{
+    border-color: var(--color-neon-principal);
+    box-shadow: 0 0 5px var(--color-neon-principal);
+}
+.filtros-busqueda input[type="date"]::-webkit-calendar-picker-indicator 
+{
+    filter: invert(1);
+}

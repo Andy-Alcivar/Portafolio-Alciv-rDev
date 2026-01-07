@@ -1,0 +1,1270 @@
+/* --- Variables de Color (Temas) --- */
+:root 
+{
+    /* Colores por defecto */
+    --primary-color: hsl(210, 29%, 13%);
+    --secondary-color: #FF0000;
+    --text-color: #fff;
+    --accent-red: #FF0000;
+    --accent-blue: #00FFFF;
+    --accent-black: #000;
+    --bg-card: #00FFFF;
+    --button-text: #00FFFF;
+    --button-bg: #FF0000;
+    --social-links-hover: #00FFFF;
+    --button-hover-bg: linear-gradient(to right, var(--accent-red), var(--accent-blue));
+    --bg-home-links: linear-gradient(to bottom,var(--primary-color),var(--primary-color), var(--accent-red));
+    --background-color: linear-gradient(to right, var(--accent-black), var(--accent-blue), var(--accent-black), var(--accent-red), var(--accent-black));
+    --border-glow: 0 0 5px var(--accent-red), 0 0 10px var(--accent-red), 0 0 15px var(--accent-red), 0 0 20px var(--accent-red), 0 0 30px var(--accent-red), inset -1px -1px var(--accent-black);
+    --bg-skills: linear-gradient(15deg, var(--primary-color), var(--primary-color), var(--accent-red));
+    --bg-footer: linear-gradient(10deg, var(--accent-red), var(--primary-color), var(--accent-black));
+}  
+  /* Modo hacker */
+.hacker-mode 
+{
+    --text-color: #fff;
+    --primary-color: hsl(210, 29%, 13%);
+    --secondary-color: #00FF00;
+    --button-bg: #00FF00;
+    --button-text: #1e1e1e;
+    --bg-card: #fff;
+    --accent-green: #00FF00;
+    --social-links-hover: #fff;
+    --button-hover-bg: linear-gradient(to right, var(--accent-green), var(--primary-color));
+    --bg-home-links: linear-gradient(to bottom,var(--primary-color),var(--primary-color), var(--accent-green));
+    --background-color: linear-gradient(to right,var(--primary-color), var(--primary-color), var(--accent-green),var(--primary-color));
+    --border-glow: 0 0 5px var(--accent-green), 0 0 10px var(--accent-green), 0 0 15px var(--accent-green), 0 0 20px var(--accent-green), 0 0 25px var(--accent-green), inset -1px -1px var(--primary-color);
+    --bg-skills: linear-gradient(15deg, var(--primary-color), var(--primary-color), var(--accent-green));
+    --bg-footer: linear-gradient(10deg, var(--accent-green), var(--primary-color), var(--accent-black));
+}  
+  /* Modo futurista */
+.futuristic-mode 
+{
+    --text-color: #fff;
+    --primary-color: hsl(210, 29%, 13%);
+    --secondary-color: #00FFFF;
+    --accent-violet: #FF00FF;
+    --accent-blue: #00FFFF;
+    --button-bg: #FF00FF;
+    --bg-card: #FF00FF;
+    --button-text: #00FFFF;
+    --social-links-hover: #FF00FF;
+    --button-hover-bg: linear-gradient(to right, var(--accent-violet), var(--accent-blue));
+    --bg-home-links: linear-gradient(to bottom,var(--primary-color),var(--primary-color), var(--accent-blue));
+    --background-color: linear-gradient(to right, var(--primary-color), var(--accent-blue), var(--accent-violet) ,var(--primary-color));
+    --border-glow: 0 0 5px var(--accent-violet), 0 0 10px var(--accent-violet), 0 0 15px var(--accent-violet), 0 0 20px var(--accent-blue), 0 0 25px var(--accent-blue), inset -1px -1px var(--primary-color);
+    --bg-skills: linear-gradient(15deg, var(--primary-color), var(--primary-color), var(--accent-blue));
+    --bg-footer: linear-gradient(10deg, var(--accent-blue), var(--primary-color), var(--accent-black));
+}
+/* ========================================================================================================= */
+/* --- 1. Global Reset & Base Styles (Mobile-First) --- */
+/* Estos estilos se aplican a TODAS las pantallas por defecto. Son la fundación para móviles. */
+/* ========================================================================================================= */
+
+/* Reset universal para eliminar márgenes y paddings por defecto y establecer box-sizing */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilos base para el HTML y tipografía general */
+html {
+    font-size: 16px; /* Define la base para la unidad 'rem' (1rem = 16px por defecto) */
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces internos */
+    font-family: 'Orbitron', sans-serif; /* Tu fuente principal */
+    overflow-x: hidden; /* Ayuda a prevenir barras de desplazamiento horizontales indeseadas */
+}
+/* Estilos base para el BODY, actuando como el contenedor principal de la cuadrícula global */
+body {
+    width: 100%;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura del viewport */
+    background: var(--background-color, #1a1a1a); /* Color de fondo, con fallback si no existe la variable */
+    color: var(--text-color, #f5f5f5); /* Color del texto, con fallback */
+    line-height: 1.6; /* Altura de línea para mejor legibilidad */
+    transition: all 0.3s ease-in-out; /* Transiciones suaves para cambios de tema, etc. */
+    overflow-x: hidden; /* Asegura que el body no desborde horizontalmente */
+
+    /* CSS Grid: El body organiza las áreas principales (header, main, footer) */
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header (alto automático), main (ocupa el resto), footer (alto automático) */
+    grid-template-areas:
+        "header-area"
+        "main-area"
+        "footer-area"; /* Nombres de las áreas para la cuadrícula */
+    max-width: 100vw; /* Asegura que el body no se extienda más allá del viewport */
+}
+
+/* Asignar las áreas de grid a los elementos HTML correspondientes */
+header { grid-area: header-area;}
+main { grid-area: main-area; margin-top: 70px; max-width: 100vw;}
+footer { grid-area: footer-area; box-shadow: var(--border-glow); }
+
+/* Estado oculto */
+.reveal 
+{
+    opacity: 0;
+    transform: translateY(100px); /* desplazada hacia abajo */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform;
+  }
+/* Estado visible */
+.reveal.active 
+{
+    opacity: 1;
+    transform: translateY(0);
+}
+.mode-message 
+{
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    color: var(--accent-black);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .scroll-animar
+  {
+  /* Ocultar el elemento */
+    opacity: 0; 
+    /* Posición inicial para el movimiento (ejemplo: se mueve 20px hacia abajo) */
+    transform: translateY(20px); 
+    /* Definición de la transición */
+    transition: opacity 1s ease-out, transform 0.8s ease-out; 
+    /* Es bueno definir la transición aquí para que la animación sea suave */
+  }
+  /* Estado final de la animación (Aplicado por JS al hacer scroll) */
+.scroll-animar.active 
+{
+    opacity: 1;
+    transform: translateY(0); /* Posición final */
+}
+/* Estilos generales para títulos de sección */
+.section-title {
+    display: flex; /* Añadir flex para centrar contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100px; /* Mantener la altura para la animación */
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Importante para la animación de 'typing' */
+    text-align: center; /* Centrar el texto (para cuando se envuelva) */
+}
+
+/* Tu texto de animación de escritura */
+.typing-text {
+    font-size: clamp(2rem, 6vw, 4rem); /* Ajustar tamaño de fuente de forma responsiva */
+    color: var(--primary-color); /* Usar variable de color */
+    text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
+    white-space: nowrap; /* POR DEFECTO: PERMITIR QUE EL TEXTO SE ENVUELVA */
+    overflow: hidden;
+    border-radius: 10px;
+    border-right: 1px solid var(--secondary-color); /* El "cursor" de la animación */
+    animation: typing 4s steps(30, end) infinite, blink 0.7s step-end infinite;
+    max-width: 0; /* Necesario para el efecto de escritura */
+}
+/* ========================================================================================================= */
+/* --- 2. Estilos para Componentes y Secciones (Mobile-First) --- */
+/* Define cómo se ven tus componentes y secciones en pantallas pequeñas (móviles).
+   Estos estilos son la "base" que los media queries sobrescribirán si es necesario. */
+/* ========================================================================================================= */
+
+/* --- Barra de Navegación (Nav) --- */
+#navbar {
+    display: flex; /* Para que sus hijos directos (los dos <ul>) se alineen */
+    justify-content: space-between; /* Intentará poner el primer <ul> a la izquierda, el segundo <ul> (sidebar) a la derecha */
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color, #2b2b2b);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: var(--border-glow);
+    height: 70px;
+}
+/* Estilos para el PRIMER UL (el de los enlaces principales y el logo de código) */
+#navbar > ul:first-of-type {
+    list-style: none; /* Eliminar viñetas */
+    display: flex; /* Para que los <li> de esta lista se alineen horizontalmente */
+    align-items: center; /* Centrar verticalmente los ítems */
+    gap: 1.5rem; /* Espacio entre los ítems de la nav principal */
+    /* Por defecto en móvil, algunos ítems de este UL estarán ocultos (hideOnMobile) */
+}
+#navbar > ul:first-of-type li a {
+    text-decoration: none;
+    color: var(--text-color, #f5f5f5);
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px; /* Bordes redondeados */
+    transition: color 0.3s;
+}
+
+#navbar > ul:first-of-type li a:hover {
+    background: var(--button-hover-bg);
+}
+
+/* Tu "logo" de icono de código */
+#navbar > ul:first-of-type li:first-child a i {
+    font-size: 1.8rem; /* Tamaño del icono */
+    color: var(--secondary-color, #00f0ff); /* Color del icono */
+}
+
+/* Ocultar elementos específicos en móvil por defecto */
+.hideOnMobile {
+    display: none;
+}
+
+/* Tu botón del menú hamburguesa, ahora es un <li> */
+.menu-button button {
+    display: block; /* Visible en móvil */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+.menu-button a 
+{ /* El enlace dentro del li.menu-button */
+    color: var(--text-color, #f5f5f5);
+    font-size: 1.8rem; /* Tamaño del icono de hamburguesa */
+    transition: color 0.3s;
+}
+.menu-button a:hover {
+
+    color: var(--accent-color, #00f0ff);
+}
+/* --- Sidebar para menú móvil --- */
+/* NOTA: Este UL es el SEGUNDO UL dentro de #navbar */
+.sidebar { /* Esta clase ya la tenías en tu <ul> para el sidebar */
+    list-style: none; /* Eliminar viñetas */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Inicialmente fuera de la pantalla */
+    width: 100%; /* Ocupa todo el ancho en móvil */
+    max-width: 300px; /* Limita el ancho del sidebar en pantallas más grandes */
+    height: 100vh;
+    background:rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(100px);
+    padding: 4rem 1.5rem; /* Espacio para que no se superponga con la nav fija */
+    transition: right 0.3s ease-in-out;
+    z-index: 999; /* Detrás del botón de menú principal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.7); /* Sombra para que se vea que "sale" */
+}
+
+.sidebar.active {
+    right: 0; /* Deslizar hacia adentro cuando está activo */
+}
+
+.sidebar li {
+    width: 100%;
+    text-align: center; /* Alinear texto a la izquierda */
+    padding: 0.5rem;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 0.5rem;
+    color: var(--text-color, #f5f5f5);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.sidebar li a:hover {
+    color: var(--secondary-color, #00f0ff);
+    background: var(--button-hover-bg);
+}
+
+/* Botón de cerrar sidebar */
+.sidebar li:first-child a i { /* El ícono fas fa-times */
+    font-size: 1.8rem;
+    color: var(--text-color, #f5f5f5);
+}
+.sidebar li:first-child a:hover i {
+    color: var(--secondary-color, #00f0ff);
+}
+.theme-btn {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--secondary-color, #00f0ff);
+    background: var(--button-bg); /* O el color que desees */
+    color: var(--accent-black); /* Color del texto del enlace */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+.theme-btn:hover {
+    background: var(--button-hover-bg); /* O un color de hover */
+    color: var(--text-color);
+    transform: scale(1.05); /* Un ligero efecto de escala al hacer hover, opcional */
+    transition: transform 0.3s ease-in-out;
+}
+/* --- Estilos para las Secciones Generales --- */
+.section-content {
+    padding: 1rem; /* Padding base para todas las secciones */
+    width: 100%;
+}
+/* --- Home Section --- */
+#home {
+    /* `section-content` ya le da padding y max-width. */
+    /* Este es el contenedor flex para la imagen y el texto en desktop */
+    display: flex;
+    flex-direction: column; /* Apilar en móvil por defecto */
+    align-items: center; /* Centrar ítems */
+    justify-content: space-around; /* Centrar contenido */
+    scroll-margin-top: 80px;
+    gap: 1rem; /* Espacio entre el holograma y el contenido de texto */
+    min-height: 70vh; /* Para que ocupe al menos toda la altura de la vista */
+    text-align: center; /* Centrar el texto por defecto */
+    position: relative; /* Para el posicionamiento del holograma si es absoluto */
+    overflow: hidden; /* Evitar que el holograma se salga si se posiciona de forma extraña */
+    box-shadow: var(--border-glow);
+}
+#home::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/BG.webp) center / cover no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    overflow: hidden;
+}
+/* Contenedor del holograma */
+.home-hologram {
+    position: relative; /* Para posicionar las imágenes dentro de él */
+    display: flex; /* Para centrar las imágenes */
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    width: 100%;
+}
+picture
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.base
+{
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    mix-blend-mode: screen;
+    max-width: 120px;
+    border-radius: 20%;
+    z-index: 10;
+    box-shadow: var(--border-glow);
+}
+.text
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* Contenido de texto y enlaces sociales */
+.home-intro-content 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+.home-intro-content h1 
+{
+    font-size: 1.5rem; /* Tamaño de fuente para H1 en móvil */
+    font-weight: 900;
+    color: var(--text-color);
+    animation: letter-appear 4s ease-out infinite forwards;
+}
+.home-intro-content h3 
+{
+    font-size: 1rem; /* Tamaño de fuente para H3 en móvil */
+    font-weight: 200;
+    color: var(--text-color);
+    animation: slide-up 4s ease-out infinite alternate 0.5s;
+}
+/* Contenedor principal de los social links - Ahora organiza los GRUPOS con Grid */
+.social-links {
+    display: grid; /* Activa el modo Grid para este contenedor */
+    /* Define UNA columna principal, lo que hará que los grupos se apilen */
+    grid-template-columns: 1fr;
+    /* Los elementos se colocarán en filas automáticas, una debajo de la otra */
+    grid-auto-rows: auto;
+    /* El espacio entre las filas (grupos) */
+    justify-content: left; /* Alinea los grupos a la izquierda horizontalmente dentro de sus celdas de grid */
+    align-content: flex-start; /* Alinea los grupos al inicio verticalmente en el contenedor */
+    gap: 2rem; /* para que haya más espacio entre los grupos apilados */
+    max-width: 800px; /* Ancho máximo para que no se estire demasiado en pantallas grandes */
+    padding: 1rem; /* Añade un poco de padding para que no se pegue a los bordes */
+}
+
+.social-links-home {
+    display: grid; /* Activa Grid para los iconos */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho para los iconos */
+    gap: 2rem; /* Mantiene el espacio original entre los elementos */
+    width: 100%; /* Ocupa el ancho completo de la celda de grid principal */
+}
+
+.social-links-home a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 2rem; /* Tamaño del icono */
+    background: var(--bg-home-links);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px var(--bg-color); /* Usando var(--bg-color) como en tu original */
+}
+.social-links-home a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 10px 20px var(--social-links-hover);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* ANIMACIÓN Y ROTACIÓN DE ICONOS SOCIALES */
+.social-links-home a i {
+    transition: transform 0.3s ease;
+}
+
+.social-links-home a:hover i {
+    transform: rotate(360deg);
+}
+/* Estilos para la sección de 'About' (o certificados en tu CSS anterior) */
+#about {
+    scroll-margin-top: 70px;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    gap: 2rem;
+    box-shadow: var(--border-glow);
+    padding-bottom: 2rem;
+}
+
+/* Contenedor de las tarjetas de 'Certificados' */
+.cert-container { /* Usar el nombre que tenías para la grid */
+    display: flex; /* Cambiar a flex para un control más fácil en móviles */
+    flex-direction: column; /* Apilar en móviles */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem; /* Asegurar padding */
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+/* Tarjeta individual de certificado */
+.cert-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1.5rem;
+    gap: 1rem;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px var(--secondary-color), 0 0 25px var(--secondary-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--bg-card), 0 0 25px var(--bg-card);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+/* Para que el texto libre se alinee al inicio si lo tienes */
+.free {
+    text-align: start;
+}
+
+.cert-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem; /* Reducido para móviles */
+}
+
+.cert-logo {
+    min-width: unset; /* Eliminar el min-width que causaba desbordamiento */
+    width: 100%;
+    max-width: 200px; /* Nuevo max-width responsivo */
+    filter: drop-shadow(0 0 5px var(--secondary-color)) drop-shadow(0 0 10px var(--secondary-color));
+    height: auto; /* Para mantener la proporción */
+    object-fit: contain; /* Ajustar imagen si es necesario */
+}
+.cert-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: none;
+    background: var(--button-bg);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.cert-button:hover {
+    background: var(--button-hover-bg);
+    box-shadow: 0 0 20px var(--bg-card), 0 0 30px var(--bg-card);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+/* --- Skills Section (#skills) --- */
+#skills {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4rem;
+    min-width: unset; /* Remover esto para que sea responsivo */
+    min-height: 50vh;
+    scroll-margin-top: 70px;
+    background: var(--bg-skills);
+    border-radius: 10px;
+    padding-bottom: 2rem;
+    box-shadow: var(--border-glow);
+    transition: all 0.3s ease-in-out;
+}
+.div-skills 
+{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adaptado a móvil */
+    text-align: center;
+    gap: 1.5rem; /* Ajustado para móvil */
+    width: 100%;
+    max-width: 400px; /* Limite de ancho para móviles */
+}
+.div-skills a 
+{
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    display: flex; /* Asegura que el contenido se centre */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem; /* Pequeño padding interno */
+}
+.div-skills a:hover 
+{
+    transform: scale(1.1);
+    color: var(--secondary-color);
+}
+.div-skills i 
+{
+    font-size: 3rem; /* Ajustado para móvil */
+    margin-bottom: 0.5rem;
+}
+.div-skills h2 
+{ 
+    font-size: 1rem; /* Ajustado para móvil */
+}
+/* --- Projects Section (#projects) --- */
+#projects {
+    position: relative;
+    scroll-margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: unset; /* Remover para responsividad */
+    min-height: 50vh;
+    gap: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--border-glow);
+    transition: all 0.3s ease-in-out;
+    padding-bottom: 2rem;
+}
+#projects::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(../img/BG.webp) center / cover no-repeat;
+    z-index: -1;
+    opacity: 0.5;
+    overflow: hidden;
+}
+/* Projects Grid */
+.projects { 
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto en móvil */
+    gap: 2rem;
+    justify-items: center;
+    min-width: unset; /* Remover para responsividad */
+    min-height: unset; /* Remover para responsividad */
+    position: relative;
+    border-radius: 5px;
+    width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem; /* Ajustado para móvil */
+    width: 100%;
+    border-radius: 10px;
+}
+.card {
+    min-width: 100%;
+    min-height: 300px; /* Ajustado para móvil */
+    perspective: 1000px;
+    border-radius: 10px; /* Asegurar bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra genérica para la tarjeta */
+}
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px; /* Consistente con card */
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+}
+.front {
+    color: var(--text-color);
+    font-size: 1.2rem; /* Ajustado para móvil */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--border-glow); /* Usar tu glow para la parte frontal */
+}
+
+.front img {
+    min-width: 100%;
+    max-height: 200px; /* Ajustado para móvil */
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.back {
+    color: var(--text-color);
+    transform: rotateY(180deg);
+    padding: 1rem;
+    font-size: 0.9rem; /* Ajustado para móvil */
+    text-indent: 0; /* Quitar indentación para móviles */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--border-glow); /* Usar tu glow para la parte trasera */
+    background-color: var(--primary-color); /* Fondo para la parte trasera */
+}
+.card:hover .front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+.btn {
+    background: var(--button-bg); /* Usar variable de color */
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--primary-color); /* Color de texto del botón */
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.btn:hover {
+    background: var(--button-hover-bg);
+    box-shadow: 0 0 10px var(--bg-card), 0 0 20px var(--bg-card);
+}
+.iconos {
+    border-radius: 10px;
+    display: flex; /* Para alinear los iconos */
+    gap: 0.5rem; /* Espacio entre iconos */
+}
+.iconos i {
+    padding: 5px;
+    font-size: 2rem; /* Ajustado para móvil */
+}
+/* Estilos para los iconos específicos */
+.iconos i.fa-html5 { color: #E34F26; }
+.iconos i.fa-css3-alt { color: #1572B6; }
+.iconos i.fa-js { color: #e4e709; }
+.iconos i.fa-java { color: #e60808; }
+.iconos i.fa-database { color: #1572B6; }
+.iconos i:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 5px var(--accent-blue); /* Usar accent-blue para glow */
+}
+
+/* --- Contact Section (#contact) --- */
+#contact { 
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: var(--border-glow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem; /* Espacio para que no se superponga con el footer */
+}
+
+#contact .contact-grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Apilado en móvil */
+    gap: 2rem;
+    width: 100%;
+    justify-items: center;
+}
+#contact-form {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 1.5rem; /* Ajustado para móvil */
+    border-radius: 10px;
+    box-shadow: var(--border-glow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Ajustado para móvil */
+}
+#contact-form label {
+    font-size: 1.2rem; /* Ajustado para móvil */
+    color: var(--secondary-color);
+}
+#contact-form input,
+#contact-form select,
+#contact-form textarea {
+    width: 100%;
+    padding: 0.6rem; /* Ajustado para móvil */
+    border: none; /* Eliminar el borde extra que tenías */
+    border-radius: 5px;
+    outline: none; /* Eliminar outline por defecto */
+    background-color: var(--input-background, #2b2b2b);
+    color: var(--text-color, #f5f5f5);
+    font-size: 1.2rem; /* Ajustado para móvil */
+}
+#contact-form input:hover,
+#contact-form select:hover,
+#contact-form textarea:hover {
+    box-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color), 0 0 15px var(--secondary-color), inset -1px -1px var(--primary-color);
+}
+#contact-form textarea {
+    resize: none; /* Evitar que el usuario cambie el tamaño del textarea */
+    height: 150px; /* Ajustado para móvil */
+    overflow: auto;
+}
+#contact-form button {
+    background: var(--button-bg); /* Usar button-bg de las variables */
+    color: var(--primary-color); /* Usar primary-color para texto del botón */
+    padding: 0.7rem;
+    font-weight: bold;
+    font-size: 1.2rem; /* Ajustado para móvil */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+#contact-form button:hover {
+    background: var(--button-hover-bg);
+    box-shadow: 0 0 10px var(--bg-card), 0 0 20px var(--bg-card);
+}
+.mensaje-exito {
+    display: none; /* Oculto por defecto */
+    background-color: #e6ffe6;
+    color: #008000;
+    border: 1px solid #b3ffb3;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.mensaje-error-envio {
+    display: none; /* Oculto por defecto */
+    background-color: #ffe6e6;
+    color: #ff0000;
+    border: 1px solid #ffb3b3;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ajustado para móvil */
+    width: 100%;
+    max-width: 400px; /* Consistente con el formulario */
+    background-color: var(--primary-color);
+    padding: 1.5rem; /* Ajustado para móvil */
+    border-radius: 10px;
+    box-shadow: var(--border-glow);
+    text-align: center;
+    align-items: center;
+}
+.contact-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Ajustado para móvil */
+    font-size: 1.2rem; /* Ajustado para móvil */
+    color: var(--text-color);
+}
+.contact-info h2 {
+    font-size: 1.5rem; /* Ajustado para móvil */
+    color: var(--secondary-color);
+}
+.video-wrapper {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    background-color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.video-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 10px; /* Asegurar el border-radius de la miniatura */
+}
+.play-button {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: black;
+    z-index: 3;
+    clip-path: polygon(25% 0%, 100% 50%, 25% 100%);
+    transform: translateX(10%);
+    box-shadow: 0 0 20px var(--accent-blue); /* Añadir el glow del botón de play */
+}
+
+/* --- Footer (#footer) --- */
+#footer 
+{
+    min-width: 100%; /* Asegurar que ocupe todo el ancho */
+    display: flex;
+    flex-direction: column; /* Apilado en móvil */
+    justify-content: center; /* Centrar contenido */
+    align-items: center;
+    box-shadow: var(--border-glow);
+    background: var(--bg-footer); /* Usar la variable de fondo */
+    padding: 2rem 1rem; /* Ajustado para móvil */
+    gap: 1.5rem; /* Ajustado para móvil */
+    position: relative;
+    color: var(--text-color);
+    text-align: center; /* Centrar texto */
+    font-weight: 800;
+}
+.footer-contact a
+{
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    text-decoration: none; /* Eliminar subrayado */
+}
+.footer-contact a:hover{
+    color: var(--secondary-color);
+}
+.footer-social .social-links-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-social .social-links-footer a {
+    color: var(--text-color-light, #cccccc);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.footer-social .social-links-footer a:hover {
+    color: var(--secondary-color);
+}
+.footer-copyright
+{
+    font-size: 1rem; /* Ajustado para móvil */
+    color: var(--text-color-light, #cccccc);
+}
+/* ========================================================================================================= */
+/* --- 3. Media Queries (Escalando a pantallas grandes - Mobile-First) --- */
+/* Aquí solo sobrescribes o añades estilos para cada breakpoint.
+   ¡Recuerda que solo defines los cambios, no repites estilos que ya están bien! */
+/* ========================================================================================================= */
+
+/* --- Tablet (min-width: 768px) --- */
+@media (min-width: 768px) and (max-width: 1025px){
+   /* --- Nav para Tablet --- */
+    #navbar 
+    {
+        justify-content: space-between; /* Permite que los dos <ul> se separen */
+        padding: 3rem 1rem;
+    }
+    /* Mostrar los enlaces principales de la nav y el botón de tema en desktop */
+    #navbar > ul:first-of-type 
+    {
+        display: flex; /* Asegura que la lista principal se muestre en desktop */
+        flex-grow: 1; /* Permite que ocupe el espacio disponible */
+        justify-content: flex-end; /* Alinear los enlaces a la derecha si es necesario */
+        align-items: center; /* Centrar verticalmente */
+        gap: 0.5rem; /* Espacio entre los ítems */
+    }
+    #navbar > ul:first-of-type li a
+    {
+    font-size: 1.4rem;
+    }
+    .theme-btn 
+    {
+        padding: 0.85rem; /* Más pequeño */
+        font-size: 1.3rem;      /* Letra más pequeña */
+        margin-left: 1.1rem; 
+    }
+    /* Ocultar elementos específicos que eran 'hideOnMobile' */
+    .hideOnMobile {display: block;} /* O display: flex; si el <li> lo requiere */
+    /* Ocultar el botón de menú hamburguesa en tablet y desktop */
+    .menu-button {display: none;}
+    /* Asegurarse de que el sidebar esté oculto en pantallas grandes */
+    .sidebar {right: -100%;}
+    /* Mostrar el botón de tema de escritorio y ocultar el móvil */
+    .theme-toggle-container-desktop {display: block;}
+    .theme-toggle-container-mobile {display: none;}
+    /* Pequeño ajuste para el logo de código en desktop, si quieres que esté a la izquierda y el resto a la derecha */
+    #navbar > ul:first-of-type li:first-child 
+    {
+        margin-right: auto; /* Empuja los demás elementos a la derecha */
+    }
+    /* --- Secciones Generales para Tablet --- */
+    .section-content {padding: 4rem 2rem;} /* Más padding en secciones para tablet */
+    .section-title {font-size: 2.5rem;}
+    #home 
+    {
+        justify-content: space-around;
+        align-items: center;
+        padding: 2rem; /* Ajustar padding para tablet */
+        gap: 1.5rem;
+    }
+    .base
+    {
+        max-width: 200px; /* Tamaño más grande para el holograma en desktop */
+    }
+    .home-intro-content {
+        align-items: center; /* Alinear el texto a la izquierda */
+        gap: 3rem;
+    }
+    .home-intro-content h1 {
+        font-size: 2.7rem; /* Tamaño de fuente más grande para H1 */
+    }
+    .home-intro-content h3 {
+        font-size: 1.7rem; /* Tamaño de fuente más grande para H3 */
+    }
+    .social-links-home 
+    {
+        grid-template-columns: repeat(6, 1fr); /* 4 columnas de iconos sociales en desktop */
+        gap: 4rem; /* Más espacio entre los iconos */
+
+    }
+    .social-links-home a 
+    {
+        font-size: 2rem; /* Tamaño del icono más grande en desktop */
+        width: 60px; /* Aumentar el tamaño del icono */
+        height: 60px;
+    }
+    .typing-text {
+        white-space: nowrap; /* Asegurarse que se mantenga en una línea si es posible */
+    }
+    /* --- About Section para Tablet --- */
+    .cert-card
+    {
+        font-size: 1.4rem;
+    }
+     /* --- Skills Section para Tablet --- */
+    .div-skills
+    {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Más columnas en desktop */
+        max-width: 700px; /* Limite de ancho para desktop */
+        gap: 2rem; /* Más espacio entre los íconos */
+    }
+    .div-skills h2
+    {
+        font-size: 1.5rem;
+    }
+    .div-skills i {
+        font-size: 5rem; /* Tamaño del icono más grande en desktop */
+    }
+    /* --- Projects Section para Tablet --- */
+    #projects .projects-grid-container
+    {
+        /* 2 columnas de proyectos en tablet */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+    .iconos i
+    {
+        font-size: 3rem;
+    }
+    .cert-logo {
+        max-width: 350px; /* Un poco más grande en tablet */
+    }
+    .back
+    {
+        font-size: 1.2rem;
+        text-indent: 2rem;
+    }
+    .btn
+    {
+        font-size: 1.2rem;
+    }
+    #contact
+    {
+        scroll-margin-top: 70px;
+        gap: 2rem;
+    }
+    /* --- Contact Section para Tablet --- */
+    #contact .contact-grid-container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas: Formulario y Info/Video */
+        gap: 3rem;
+        justify-items: start; /* Alinear ítems al inicio de sus celdas */
+        align-items: center; /* Alinear ítems al inicio verticalmente */
+        max-width: 800px; /* Ancho máximo para el contenedor de contacto en tablet */
+        margin: 0 auto; /* Centrar el contenedor de contacto */
+    }
+    #contact-form, .contact-info-wrapper {
+        max-width: unset; /* Permitir que la grid maneje el ancho */
+        width: 100%;
+        height: auto; /* Permitir que la altura se ajuste */
+    }
+    /* --- Footer para Tablet --- */
+    #footer {
+        flex-direction: column; /* Contenido horizontal en el footer */
+        justify-content: space-around;
+        padding: 2rem 3rem;
+    }
+    .footer-contact a
+    {
+        font-size: 1.5rem;
+    }
+    .footer-social i
+    {
+        font-size: 2.2rem;
+    }
+    .footer-copyright
+    {
+        font-size: 1.4rem;
+    }
+}
+/* --- Desktop (min-width: 1024px) --- */
+@media (min-width: 1027px) {
+    /* --- Nav para Desktop --- */
+    .theme-btn 
+    {
+        padding: 0.8rem; /* Más pequeño */
+        font-size: 1.2rem;      /* Letra más pequeña */
+        margin-left: 1.1rem; 
+    }
+    /* Ocultar elementos específicos que eran 'hideOnMobile' */
+    .hideOnMobile {display: block;} /* O display: flex; si el <li> lo requiere */
+    /* Ocultar el botón de menú hamburguesa en tablet y desktop */
+    .menu-button {display: none;}
+    /* Asegurarse de que el sidebar esté oculto en pantallas grandes */
+    .sidebar {right: -100%;}
+    /* Mostrar el botón de tema de escritorio y ocultar el móvil */
+    .theme-toggle-container-desktop {display: block;}
+    .theme-toggle-container-mobile {display: none;}
+    #navbar {
+        padding: 2rem 4rem; /* Más padding en escritorio */
+    }
+    /* --- Secciones Generales para Desktop --- */
+    .section-content {
+        padding: 5rem 4rem; /* Más padding en secciones para desktop */
+    }
+    .section-title {
+        font-size: 3rem;
+    }
+    #home 
+    {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 3rem; /* Ajustar padding para tablet */
+        gap: 1rem;
+        min-height: 87vh; /* Para que ocupe al menos toda la altura de la vista */
+    }
+    .base{ max-width: 200px; /* Tamaño más grande para el holograma en desktop */}
+    .home-intro-content 
+    {
+        max-width: 600px; /* Limitar el ancho del texto en desktop */
+        align-items: flex-start; /* Alinear el texto a la izquierda */
+        text-align: start;
+    }
+    .home-intro-content h1 
+    {
+        font-size: 2rem; /* Tamaño de fuente aún más grande para H1 */
+    }
+    .home-intro-content h3 {
+        font-size: 1.2rem; /* Tamaño de fuente aún más grande para H3 */
+    }
+    .social-links-home {
+        grid-template-columns: repeat(5, 1fr); /* 4 columnas de iconos sociales en desktop */
+        gap: 3rem; /* Más espacio entre los iconos */
+    }
+    .social-links-home a {
+        font-size: 2rem; /* Tamaño del icono más grande en desktop */
+        width: 60px; /* Aumentar el tamaño del icono */
+        height: 60px;
+    }
+    /* --- About Section para Desktop --- */
+    #about
+    {
+        border-radius: 10px; /* Asegurar bordes redondeados */
+    }
+    .cert-container {
+        display: flex; /* Cambiar a flex para un mejor control en desktop */
+        flex-direction: row; /* Texto a un lado, imagen al otro */
+        justify-content: center;
+        align-items: space-around; /* Distribuir el espacio *
+        width: 100%;
+        gap: 4rem; /* Más espacio entre texto e imagen */
+    }
+    .cert-card {
+        font-size: 1.2rem; /* Tamaño de fuente más grande para desktop */
+    }
+    .cert-logo 
+    {
+        object-fit: contain; /* Asegurar que la imagen se ajuste bien */
+        width: 100%;
+        filter: drop-shadow(0 0 5px var(--secondary-color) ) drop-shadow(0 0 10px var(--secondary-color));
+    }
+    #skills
+    {
+        min-height: 87vh;
+    }
+    .div-skills
+    {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Más columnas en desktop */
+        max-width: 1000px; /* Limite de ancho para desktop */
+        gap: 2rem; /* Más espacio entre los íconos */
+    }
+    .div-skills i {
+        font-size: 5rem; /* Tamaño del icono más grande en desktop */
+    }
+    .projects
+    {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: space-around; /* Distribuir los proyectos */
+        align-items: center; /* Alinear proyectos al centro */
+        gap: 3rem; /* Más espacio entre los proyectos */
+    }
+    #contact
+    {
+        gap: 4rem; /* Más espacio entre formulario e info/video */
+    }
+    #contact .contact-grid-container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas: Formulario y Info/Video */
+        max-width: 1000px; /* Ancho máximo para el contenedor de contacto en desktop */
+        align-items: center;
+    }
+   #footer 
+   {
+    display: flex;
+    flex-direction: row; /* En fila para desktop */
+    justify-content: space-around; 
+    padding: 2rem 1rem; /* Ajustado para desktop */
+    gap: 1.5rem;
+    }
+    .footer-contact a
+    {
+        color: var(--text-color);
+    }
+    .footer-social .social-links-footer a:hover 
+    {
+    transform: scale(1.8);
+    }
+}
+/* ========================================================================================================= */
+/* --- 4. Keyframes (Animaciones) --- */
+/* ========================================================================================================= */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); } 
+    100% { transform: translateY(0px); }
+}
+@keyframes letter-appear {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-up { /* Usado como ejemplo, si no lo usas, puedes quitarlo */
+    from {
+        opacity: 0;
+        transform: translatex(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 100%; } /* Ajusta esto al ancho máximo de tu texto */
+}
+
+/* Solo para el cursor del efecto typing */
+@keyframes blink {
+    50% { border-color: transparent }
+}
