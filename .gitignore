@@ -1,0 +1,12 @@
+# Archivos de sistema (Basura de Windows/Mac)
+.DS_Store
+Thumbs.db
+
+# Carpetas de configuración del editor
+.vscode/
+
+# Dependencias (para cuando uses Node.js en el futuro)
+node_modules/
+
+# Archivos de log
+*.log
