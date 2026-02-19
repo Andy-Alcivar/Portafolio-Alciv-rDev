@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Zona Privada - AlcivarDev"
+AuthUserFile /home/admin/web/alcivrdev.cloud/public_html/gestion/.htpasswd
+Require valid-user
