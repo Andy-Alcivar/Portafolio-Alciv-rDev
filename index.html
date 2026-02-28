@@ -140,6 +140,35 @@
         <h2 class="section-title">
             <span class="typing-text">🛠️ Skills</span> 
         </h2>
+        
+        <style>
+            /* 1. Estado por defecto: Forzamos que la imagen sea blanca */
+            .div-skills a img.logo-blanco {
+                width: 50px;
+                height: 50px;
+                margin: 0 auto 10px auto;
+                display: block;
+                /* Filtro para hacer cualquier imagen blanca */
+                filter: brightness(0) invert(1);
+                transition: all 0.3s ease; /* Transición suave */
+            }
+
+            /* 2. Estado Hover: Mostramos el color original + brillo rojo */
+            .div-skills a:hover img.logo-blanco {
+                /* Quitamos la blancura para mostrar el color original */
+                filter: brightness(1) invert(0);
+                /* Aplicamos un brillo rojo intenso (como el de tus otros iconos) */
+                filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));
+                /* Opcional: El salto hacia arriba que tenían antes */
+                transform: translateY(-5px);
+            }
+
+            /* Aseguramos que el icono de React también siga tu CSS rojo en hover */
+            .div-skills a i.fa-react {
+                transition: all 0.3s ease;
+            }
+        </style>
+
         <div class="div-skills scroll-animar" data-animation="animate__jackInTheBox">
             <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" aria-label="Habilidad HTML">
                 <i class="fa-brands fa-html5"></i>
@@ -161,7 +190,16 @@
                 <i class="fa-solid fa-database"></i>
                 <h2>MySQL</h2>
             </a>
-             </div>
+            
+            <a href="https://react.dev/" target="_blank" aria-label="Habilidad React">
+                <i class="fa-brands fa-react"></i>
+                <h2>React</h2>
+            </a>
+            <a href="https://tailwindcss.com/" target="_blank" aria-label="Habilidad Tailwind CSS">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" class="logo-blanco">
+                <h2>Tailwind</h2>
+            </a>
+        </div>
 
         <h2 class="section-title">
             <span class="typing-text">🛠️ Tools</span> 
@@ -187,7 +225,16 @@
                 <i class="fa-solid fa-cloud-arrow-up"></i>
                 <h2>VPS Hostinger</h2>
             </a>
-             </div>
+            
+            <a href="https://vitejs.dev/" target="_blank" aria-label="Herramienta Vite">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg" alt="Vite" class="logo-blanco">
+                <h2>Vite</h2>
+            </a>
+            <a href="https://nodejs.org/" target="_blank" aria-label="Herramienta Node.js">
+                <i class="fa-brands fa-node-js"></i>
+                <h2>Node.js</h2>
+            </a>
+        </div>
     </section>
 
     <section id="projects" class="section-content">
@@ -248,10 +295,65 @@
                     </div>
                 </div>
                 <div class="iconos">
-                    <a href="https://cleaningservice-marbella.com" target="_blank">
+                    <a href="https://jimmyscargoecu.com" target="_blank">
                         <i class="fa-brands fa-html5 surprise" ></i>
                         <i class="fa-brands fa-css3-alt surprise"></i>
                         <i class="fa-brands fa-js surprise"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project pulse">
+                <div class="card">
+                    <div class="face front">
+                        <picture>
+                            <source srcset="../img/allcamedic-preview.webp" type="image/webp">
+                            <img src="../img/allcamedic-preview.jpg" alt="Allcamedic sitio web realizado con React, Tailwind CSS y Vite" loading="lazy">
+                        </picture>
+                        <h3>Allcamedic</h3>
+                    </div>
+                    <div class="face back">
+                        <h3>Allcamedic</h3>
+                        <p>
+                        Allcamedic es una Single Page Application (SPA) premium para un consultorio médico obstétrico. 
+                        El sitio destaca por sus animaciones fluidas, diseño 100% responsivo, optimización SEO avanzada y un enlace directo de conversión a WhatsApp.
+                        </p>
+                        <a role="button" href="https://allcamedic.alcivrdev.cloud" target="_blank">
+                        <button class="btn neon-pulse">
+                                <span>Details</span>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+                
+                <style>
+                    /* Hacemos que los SVG salten y brillen igual que las fuentes */
+                    .iconos img.surprise {
+                        transition: transform 0.3s ease, filter 0.3s ease;
+                        cursor: pointer;
+                    }
+                    .iconos img.surprise:hover {
+                        transform: scale(1.2) translateY(-4px); /* El salto hacia arriba */
+                        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)); /* El brillo neón */
+                    }
+                    /* Le damos el brillo azul característico a React */
+                    .iconos i.fa-react {
+                        transition: all 0.3s ease;
+                    }
+                    .iconos i.fa-react:hover {
+                        text-shadow: 0 0 12px #61DAFB;
+                        transform: scale(1.2) translateY(-4px);
+                    }
+                </style>
+
+                <div class="iconos">
+                    <a href="https://allcamedic.alcivrdev.cloud" target="_blank" style="display: flex; gap: 15px; align-items: center; justify-content: center; text-decoration: none;">
+                        
+                        <i class="fa-brands fa-react surprise" title="React" style="color: #61DAFB;"></i>
+                        
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" class="surprise" title="Tailwind CSS" style="width: 28px; height: 28px; object-fit: contain;">
+                        
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg" alt="Vite" class="surprise" title="Vite" style="width: 28px; height: 28px; object-fit: contain;">
+                        
                     </a>
                 </div>
             </div>
